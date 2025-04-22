@@ -1,4 +1,4 @@
-# 🔵 Circle Properties for Beginners
+# Circle Properties for Beginners
 
 ## Basic Terms
 

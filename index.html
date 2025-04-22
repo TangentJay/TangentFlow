@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TangentFlow - Demo</title>
@@ -119,6 +120,17 @@
         <p> <span style="color:darkorange">   4/22/2025 Update. TODO : LEARN CSS AND JAVA...MAKE LINKS CLICKABLE. ADD/REMOVE STUFF IDK THE DIRECTIONS. </span> </p>
         <p> <span style="color: darkorchid"> OR YOUR OWN BOOK STOR LINK <br> <img src="images/zzf.jpg" alt="My Picture" width="300">  </span> </p>
         <p> <span style="color: rebeccapurple">OR A LINK TO MUSIC OR your STUFF  >. this is BTNH </span><br> <audio controls>
+          
+          <!-- Markdown container -->
+<div id="markdown-display"></div>
+
+<script>
+  fetch('files/mkdtst.md')
+    .then(res => res.text())
+    .then(text => {
+      document.getElementById('markdown-display').innerHTML = marked.parse(text);
+    });
+</script>
   <source src="audio/btnh.mp3" type="audio/mpeg"> 
   Your browser does not support the audio tag.
 </audio>
@@ -153,7 +165,22 @@
 
       <!-- Projects Section -->
       <div class="tile" id="projects">
-        <h3>My Projects</h3>
+        <h3>My Projects TEST</h3>
+        <!-- Add this to your HTML head or body -->
+
+
+<!-- Markdown container -->
+<div id="markdown-display"></div>
+
+<script>
+  fetch('files/cir.md')
+    .then(res => res.text())
+    .then(text => {
+      document.getElementById('markdown-display').innerHTML = marked.parse(text);
+    });
+</script>
+
+
         <p>This is where I will showcase my beginner projects in Python, SQL, Cybersecurity, and other areas as I learn and grow Alongside other fun stuff!</p>
       </div>
     </div>

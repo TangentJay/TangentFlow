@@ -1,5 +1,5 @@
 # 4/14/2025  
-## 🔤 Physics Symbols Cheat Sheet
+## Physics Symbols Cheat Sheet
 
 | Symbol        | Meaning                   | Unit            | Type       | Example Formula            |
 |---------------|---------------------------|------------------|------------|-----------------------------|
