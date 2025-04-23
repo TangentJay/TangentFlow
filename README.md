@@ -1,5 +1,5 @@
-# Aggregation
-# AutoContent Hub 
+# Aggregate, Amalgamate, and Assimilate! Aggregation
+# TangentFlow 
 
 A personal learning + portfolio project by **TangentJay**.  
 This website curates trending content like memes, game guides, tech news, and beginner-friendly learning resources using public APIs.
@@ -8,7 +8,7 @@ This website curates trending content like memes, game guides, tech news, and be
 
 ### 🔧 Project Status
 In early development – learning by doing.  
- Motto: **WE DO IT LIVE!**  
+ Motto: **WE DO IT LIVE! Aggregate, Amalgamate, and Assimilate!**  
 
 ---
 
@@ -43,4 +43,4 @@ In early development – learning by doing.
 
 ---
 
-> “Start small. Build real. Learn everything. WE DO IT LIVE”
+> “Start small. Build real. Learn everything. WE DO IT LIVE! Aggregate, Amalgamate, and Assimilate! ”
