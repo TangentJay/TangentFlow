@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TangentJay Portfolio | Aggregatron</title>
   <style>
+    /* Make sure all elements use border-box sizing (includes padding/border in width) */
     * {
       box-sizing: border-box;
     }
-    body {
+
+    /* Set up full-height layout */
+    html, body {
+      height: 100%;
       margin: 0;
+    }
+
+    /* Base layout for the page */
+    body {
       font-family: Arial, sans-serif;
-      background-color: #587e03;
+      background-color: #587e03; /* Green background */
       color: #141313;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
+      flex-direction: column; /* Stacks content vertically */
     }
+
+    /* Header with title and subtitle */
     header {
       background-color: #0d0600;
       padding: 20px;
       color: #909a24;
       text-align: center;
-      width: 100%;
-      margin-bottom: 2rem;
     }
     header h1 {
       margin: 0;
@@ -34,12 +40,12 @@
       font-size: 1rem;
       color: #1d5406;
     }
+
+    /* Navigation bar (horizontal menu) */
     nav {
-      background-color: #000000;
+      background-color: #000;
       padding: 10px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
+      text-align: center;
     }
     nav a {
       color: #909a24;
@@ -50,25 +56,37 @@
     nav a:hover {
       text-decoration: underline;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
-      gap: 1.5rem;
+
+    /* Main layout wrapper: holds content + sidebar */
+    .wrapper {
+      display: flex; /* side-by-side layout */
+      flex: 1; /* grow to fill remaining height */
       width: 100%;
-      max-width: 960px;
+      max-width: 1400px;
+      margin: 0 auto; /* center horizontally */
       padding: 1rem;
     }
+
+    /* Grid layout for content tiles */
+    main.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive columns */
+      gap: 1.5rem;
+      flex: 1; /* take up most space */
+    }
+
+    /* Each content tile */
     .tile {
       background: #070707;
       border: 1px solid #ddd;
       padding: 1.2rem;
       border-radius: 12px;
       text-align: left;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease; /* smooth animation */
     }
     .tile:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px); /* small lift effect */
     }
     .tile h2 {
       font-size: 1.1rem;
@@ -77,78 +95,119 @@
     }
     .tile p {
       font-size: 0.9rem;
-      color: #555;
+      color: #bbb;
     }
+
+    /* Sidebar on the right */
+    .sidebar {
+      width: 220px;
+      margin-left: 1rem;
+      background-color: #141414;
+      padding: 1rem;
+      border-radius: 10px;
+      color: #eee;
+      height: fit-content;
+      position: sticky; /* stays visible when scrolling */
+      top: 1rem;
+    }
+    .sidebar h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #909a24;
+    }
+    .sidebar a {
+      display: block;
+      color: #ddd;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      color: #f0ff9e;
+    }
+
+    /* Footer sticks to the bottom of the page */
     footer {
-      margin-top: 14.2rem;
       font-size: 0.8rem;
-      color: rgba(149, 109, 45, 0.78);
       text-align: center;
-      width: 102%;
-      padding: 10px 0;
-      background-color: #5d9230;
+      padding: 12px;
+      background-color: #000000;
       color: #6914bc;
     }
+
+    /* Removes underline from links */
     a {
       text-decoration: none;
       color: inherit;
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Page Header -->
   <header>
-    <h1>TangentJay.me   I'M COOKING</h1>
+    <h1>TangentJay~   I'M COOKING</h1>
     <p>Aggregation. Amalgamation. Assimilation.</p>
   </header>
 
+  <!-- Navigation bar -->
   <nav>
-    
     <a href="#python">Python</a>
     <a href="#cybersec">Cybersec</a>
     <a href="#learning">Learning</a>
     <a href="#news">News</a>
     <a href="#projects">Projects</a>
-    <a href="#Links">Links</a>
-    <a href="#Tech">Tech</a>
+    <a href="#links">Links</a>
+    <a href="#tech">Tech</a>
   </nav>
 
-  <main class="grid">
+  <!-- Content area + sidebar layout -->
+  <div class="wrapper">
+    
+    <!-- Main content tiles -->
+    <main class="grid">
+      <a href="#cybersec" class="tile">
+        <h2>Cybersec STuff</h2>
+        <p>s.</p>
+      </a>
+      <a href="#python" class="tile">
+        <h2>Python y</h2>
+        <p>Simple </p>
+      </a>
+      <a href="#learning" class="tile">
+        <h2>STEM Learning Hub</h2>
+        <p>Maths and stuff </p>
+      </a>
+      <a href="#news" class="tile">
+        <h2>Tech News</h2>
+        <p>x.</p>
+      </a>
+      <a href="#projects" class="tile">
+        <h2>Personal Projects</h2>
+        <p>y.</p>
+      </a>
+      <a href="#resources" class="tile">
+        <h2>Learning Resources</h2>
+        <p>and more.</p>
+      </a>
+    </main>
 
-    <a href="#cybersec" class="tile">
-      <h2>Cybersec STuff</h2>
-      <p>s.</p>
-    </a>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Quick Links</h3>
+      <a href="#notepad">Notepad++</a>
+      <a href="#markdown">Markdown 101</a>
+      <a href="#html">HTML for Beginners</a>
+      <a href="#vs"> placeholders</a>
+      <a href="#host">Free Hosting</a>
+    </aside>
 
-    <a href="#python" class="tile">
-      <h2>Python y</h2>
-      <p>Simple </p>
-    </a>
+  </div>
 
-    <a href="#learning" class="tile">
-      <h2>STEM Learning Hub</h2>
-      <p>Maths and stuff </p>
-    </a>
-
-    <a href="#news" class="tile">
-      <h2>Tech News</h2>
-      <p>x.</p>
-    </a>
-
-    <a href="#projects" class="tile">
-      <h2>Personal Projects</h2>
-      <p>y.</p>
-    </a>
-
-    <a href="#resources" class="tile">
-      <h2>Learning Resources</h2>
-      <p>and more.</p>
-    </a>
-
-  </main>
-
+  <!-- Page Footer -->
   <footer>
-  TangentJay — WE DO IT LIVE.
+    TangentJay — WE DO IT LIVE.
   </footer>
 
 </body>
