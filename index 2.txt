@@ -1,1 +1,127 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TangentJay | Aggregatron</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f7f7f7;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .tile {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 1.2rem;
+      border-radius: 8px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-5px);
+    }
+
+    .tile h2 {
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
+      color: #222;
+    }
+
+    .tile p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: 0.8rem;
+      color: #999;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TangentJay.me</h1>
+    <p>Aggregation. Amalgamation. Assimilation.</p>
+  </header>
+
+  <main class="grid">
+
+    <a href="#" class="tile">
+      <h2>Cybersecurity News</h2>
+      <p>Weekly threat briefings, tool breakdowns, and NIST deep dives.</p>
+    </a>
+
+    <a href="#" class="tile">
+      <h2>Python for Security</h2>
+      <p>Simple scripts and real-world examples for scanning and logging.</p>
+    </a>
+
+    <a href="#" class="tile">
+      <h2>Linux Hardening Basics</h2>
+      <p>Easy-to-follow guide on how to lock down your system.</p>
+    </a>
+
+    <a href="#" class="tile">
+      <h2>STEM Learning Hub</h2>
+      <p>Math, science, and logic links curated from top educational platforms.</p>
+    </a>
+
+    <a href="#" class="tile">
+      <h2>HTML & CSS: Start Here</h2>
+      <p>Foundations of web development with real examples.</p>
+    </a>
+
+    <a href="#" class="tile">
+      <h2>Tech History Bits</h2>
+      <p>Explore the roots of computing, the web, and programming culture.</p>
+    </a>
+
+  </main>
+
+  <footer>
+    Built by TangentJay — WE DO IT LIVE.
+  </footer>
+
+</body>
+</html>
