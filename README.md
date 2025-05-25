@@ -6,13 +6,13 @@ This website curates trending content like memes, game guides, tech news, and be
 
 ---
 
-### 🔧 Project Status
+Project Status
 In early development – learning by doing.  
  Motto: **WE DO IT LIVE! Aggregate, Amalgamate, and Assimilate!**  
 
 ---
 
-### 📌 Current Goals
+Current Goals
 - Learn HTML, CSS, Python, and basic GitHub flow
 - Build a basic homepage layout
 - Add sample trending content (manually or via API later)
@@ -20,14 +20,14 @@ In early development – learning by doing.
 
 ---
 
-### 📚 Learning Resources
+learning Resources
 - [W3Schools (HTML Basics)](https://www.w3schools.com/html/)
 - [Khan Academy – Basic Math](https://www.khanacademy.org/math)
 - [GitHub Docs – Getting Started](https://docs.github.com/en/get-started)
 
 ---
 
-### 📎 Future Ideas (Placeholder)
+Future Ideas (Placeholder)
 - API-powered content feeds
 - Search + filter by tags or topics
 - Save and share favorite content
@@ -35,7 +35,7 @@ In early development – learning by doing.
 
 ---
 
-### 🎮 Creator
+ Creator
 **TangentJay**  
 📺 [Twitch]  https://your-twitch-link]https://www.twitch.tv/oosode
 
