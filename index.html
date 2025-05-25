@@ -19,7 +19,7 @@
     /* Base layout for the page */
     body {
       font-family: Arial, sans-serif;
-      background-color: #587e03; /* Green background */
+      background-color: #306e26; /* Green background */
       color: #141313;
       display: flex;
       flex-direction: column; /* Stacks content vertically */
@@ -29,7 +29,7 @@
     header {
       background-color: #0d0600;
       padding: 20px;
-      color: #909a24;
+      color: #3b985f;
       text-align: center;
     }
     header h1 {
@@ -48,7 +48,7 @@
       text-align: center;
     }
     nav a {
-      color: #909a24;
+      color: #af3119;
       margin: 0 15px;
       text-decoration: none;
       font-size: 1rem;
@@ -78,7 +78,7 @@
     /* Each content tile */
     .tile {
       background: #070707;
-      border: 1px solid #ddd;
+      border: 1px solid #5a1310;
       padding: 1.2rem;
       border-radius: 12px;
       text-align: left;
@@ -95,7 +95,7 @@
     }
     .tile p {
       font-size: 0.9rem;
-      color: #bbb;
+      color: #2b6722;
     }
 
     /* Sidebar on the right */
@@ -105,7 +105,7 @@
       background-color: #141414;
       padding: 1rem;
       border-radius: 10px;
-      color: #eee;
+      color: #cc0b0b;
       height: fit-content;
       position: sticky; /* stays visible when scrolling */
       top: 1rem;
@@ -113,17 +113,17 @@
     .sidebar h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
-      color: #909a24;
+      color: #c0d100;
     }
     .sidebar a {
       display: block;
-      color: #ddd;
+      color: rgba(183, 72, 179, 0.62);
       margin-bottom: 10px;
       font-size: 0.95rem;
       text-decoration: none;
     }
     .sidebar a:hover {
-      color: #f0ff9e;
+      color: #51620b;
     }
 
     /* Footer sticks to the bottom of the page */
@@ -199,6 +199,219 @@
       <a href="#markdown">Markdown 101</a>
       <a href="#html">HTML for Beginners</a>
       <a href="#vs"> placeholders</a>
+      <a href="#https://learnxinyminutes.com/">Learn x in Y min</a>
+    </aside>
+
+  </div>
+
+  <!-- Page Footer -->
+  <footer>
+    TangentJay — WE DO IT LIVE.
+  </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TangentJay Portfolio | SOON</title>
+  <style>
+    /* Make sure all elements use border-box sizing (includes padding/border in width) */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Set up full-height layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    /* Base layout for the page */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #306e26; /* Green background */
+      color: #141313;
+      display: flex;
+      flex-direction: column; /* Stacks content vertically */
+    }
+
+    /* Header with title and subtitle */
+    header {
+      background-color: #0d0600;
+      padding: 20px;
+      color: #3b985f;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1rem;
+      color: #1d5406;
+    }
+
+    /* Navigation bar (horizontal menu) */
+    nav {
+      background-color: #000;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #af3119;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main layout wrapper: holds content + sidebar */
+    .wrapper {
+      display: flex; /* side-by-side layout */
+      flex: 1; /* grow to fill remaining height */
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto; /* center horizontally */
+      padding: 1rem;
+    }
+
+    /* Grid layout for content tiles */
+    main.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive columns */
+      gap: 1.5rem;
+      flex: 1; /* take up most space */
+    }
+
+    /* Each content tile */
+    .tile {
+      background: #070707;
+      border: 1px solid #5a1310;
+      padding: 1.2rem;
+      border-radius: 12px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease; /* smooth animation */
+    }
+    .tile:hover {
+      transform: translateY(-5px); /* small lift effect */
+    }
+    .tile h2 {
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
+      color: #909a24;
+    }
+    .tile p {
+      font-size: 0.9rem;
+      color: #2b6722;
+    }
+
+    /* Sidebar on the right */
+    .sidebar {
+      width: 220px;
+      margin-left: 1rem;
+      background-color: #141414;
+      padding: 1rem;
+      border-radius: 10px;
+      color: #cc0b0b;
+      height: fit-content;
+      position: sticky; /* stays visible when scrolling */
+      top: 1rem;
+    }
+    .sidebar h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #c0d100;
+    }
+    .sidebar a {
+      display: block;
+      color: rgba(183, 72, 179, 0.62);
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      color: #51620b;
+    }
+
+    /* Footer sticks to the bottom of the page */
+    footer {
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 12px;
+      background-color: #000000;
+      color: #6914bc;
+    }
+
+    /* Removes underline from links */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Page Header -->
+  <header>
+    <h1>TangentJay~  I'M COOKING ~ Work in Progress </h1>
+    <p>Aggregation. Amalgamation. Assimilation.</p>
+  </header>
+
+  <!-- Navigation bar -->
+  <nav>
+    <a href="#python">Python</a>
+    <a href="#cybersec">Cybersec</a>
+    <a href="#learning">Learning</a>
+    <a href="#news">News</a>
+    <a href="#projects">Projects</a>
+    <a href="#tech">Tech</a>
+  </nav>
+
+  <!-- Content area + sidebar layout -->
+  <div class="wrapper">
+    
+    <!-- Main content tiles -->
+    <main class="grid">
+      <a href="#cybersec" class="tile">
+        <h2>Cybersec STuff</h2>
+        <p>s.</p>
+      </a>
+      <a href="#python" class="tile">
+        <h2>Python y</h2>
+        <p>Simple </p>
+      </a>
+      <a href="#learning" class="tile">
+        <h2>STEM Learning Hub</h2>
+        <p>Maths and stuff </p>
+      </a>
+      <a href="#news" class="tile">
+        <h2>Tech News</h2>
+        <p>x.</p>
+      </a>
+      <a href="#projects" class="tile">
+        <h2>Personal Projects</h2>
+        <p>y.</p>
+      </a>
+      <a href="#resources" class="tile">
+        <h2>Learning Resources</h2>
+        <p>and more.</p>
+      </a>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Quick Links</h3>
+      <a href="#notepad">Notepad++</a>
+      <a href="#markdown">Markdown 101</a>
+      <a href="#html">HTML for Beginners</a>
+      <a href="#vs"> placeholders</a>
+      <a href="#https://learnxinyminutes.com/">Learn x in Y min</a>
     </aside>
 
   </div>
