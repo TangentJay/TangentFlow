@@ -3,214 +3,478 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TangentJay Portfolio | SOON</title>
+  <title>TangentJay Portfolio</title>
   <style>
-    /* Make sure all elements use border-box sizing (includes padding/border in width) */
+    /* Global reset */
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Set up full-height layout */
+    /* --- INTRO / BOOT SCREEN --- */
+    #intro-screen {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #00ff41;
+      z-index: 1000;
+      text-align: center;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.7;
+      }
+    }
+
+    #intro-screen h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ff41;
+      font-family: 'Courier New', monospace;
+    }
+
+    #intro-screen p {
+      margin-bottom: 40px;
+      color: #4CAF50;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1em;
+    }
+
+    #enter-btn {
+      border: 1px solid #00ff41;
+      background: transparent;
+      color: #00ff41;
+      padding: 12px 35px;
+      cursor: pointer;
+      font-size: 1em;
+      letter-spacing: 2px;
+      transition: all 0.3s;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+    }
+
+    #enter-btn:hover {
+      background-color: #00ff41;
+      color: #000;
+      box-shadow: 0 0 15px #00ff41;
+    }
+
+    /* --- MAIN CONTENT (HIDDEN INITIALLY) --- */
+    #main-content {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    #main-content.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Base styles */
     html, body {
       height: 100%;
-      margin: 0;
+      font-family: 'Consolas', 'Courier New', monospace;
+      background-color: #000000;
+      color: #00ff00;
+      overflow: hidden; /* prevent scrolling during intro */
     }
 
-    /* Base layout for the page */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #306e26; /* Green background */
-      color: #141313;
-      display: flex;
-      flex-direction: column; /* Stacks content vertically */
+    /* Subtle moving background (scanline effect) */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 0, 0.05) 0px,
+        rgba(0, 255, 0, 0.05) 2px,
+        transparent 3px,
+        transparent 4px
+      );
+      animation: scan 12s linear infinite;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    /* Header with title and subtitle */
+    @keyframes scan {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(4px); }
+    }
+
+    /* Header */
     header {
-      background-color: #0d0600;
-      padding: 20px;
-      color: #3b985f;
       text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1rem;
-      color: #8cd360;
+      padding: 25px 10px;
+      background-color: #001000;
+      border-bottom: 1px solid #00ff00;
+      box-shadow: 0 0 12px #00ff00;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Navigation bar (horizontal menu) */
+    header h1 {
+      font-size: 2.2rem;
+      text-shadow: 0 0 10px #00ff00;
+    }
+
+    header p {
+      max-width: 800px;
+      margin: 12px auto 0;
+      font-size: 0.9rem;
+      color: #66ff66;
+    }
+
+    /* Navigation */
     nav {
       background-color: #000;
-      padding: 10px;
       text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #004000;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
+
     nav a {
-      color: #af3119;
+      color: #39ff14;
       margin: 0 15px;
       text-decoration: none;
-      font-size: 1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
+
     nav a:hover {
-      text-decoration: underline;
+      color: #00ffcc;
+      text-shadow: 0 0 6px #00ffcc;
     }
 
-    /* Main layout wrapper: holds content + sidebar */
+    /* Wrapper for grid + sidebar */
     .wrapper {
-      display: flex; /* side-by-side layout */
-      flex: 1; /* grow to fill remaining height */
-      width: 100%;
+      display: flex;
+      flex: 1;
       max-width: 1400px;
-      margin: 0 auto; /* center horizontally */
-      padding: 1rem;
+      margin: 0 auto;
+      padding: 20px;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Grid layout for content tiles */
+    /* Main grid (cards/tiles) */
     main.grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive columns */
-      gap: 1.5rem;
-      flex: 1; /* take up most space */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      flex: 1;
     }
 
-    /* Each content tile */
     .tile {
-      background: #070707;
-      border: 1px solid #5a1310;
+      background-color: #050a05;
+      border: 1px solid #00ff00;
+      border-radius: 8px;
       padding: 1.2rem;
-      border-radius: 12px;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease; /* smooth animation */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 8px #004000;
+      text-decoration: none;
+      display: block;
     }
+
     .tile:hover {
-      transform: translateY(-5px); /* small lift effect */
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px #00ff00;
     }
+
     .tile h2 {
+      color: #00ff66;
+      margin-bottom: 0.5rem;
       font-size: 1.1rem;
-      margin: 0 0 0.5rem;
-      color: #909a24;
+      text-transform: uppercase;
     }
+
     .tile p {
       font-size: 0.9rem;
-      color: #29c341;
+      color: #99ff99;
     }
 
-    /* Sidebar on the right */
+    /* Sidebar */
     .sidebar {
-      width: 220px;
-      margin-left: 1rem;
-      background-color: #141414;
+      width: 240px;
+      background-color: #000800;
+      border: 1px solid #00ff00;
+      border-radius: 8px;
       padding: 1rem;
-      border-radius: 10px;
-      color: #cc0b0b;
       height: fit-content;
-      position: sticky; /* stays visible when scrolling */
-      top: 1rem;
+      position: sticky;
+      top: 20px;
+      box-shadow: 0 0 10px #002200;
     }
+
     .sidebar h3 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #c0d100;
+      font-size: 1.1rem;
+      color: #00ff66;
+      border-bottom: 1px solid #006600;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
     }
+
     .sidebar a {
       display: block;
-      color: rgba(183, 72, 179, 0.62);
+      color: #39ff14;
       margin-bottom: 10px;
-      font-size: 0.95rem;
       text-decoration: none;
+      transition: color 0.2s ease;
     }
+
     .sidebar a:hover {
-      color: #4f6300;
+      color: #00ffcc;
     }
 
-    /* Footer sticks to the bottom of the page */
+    /* Container for detailed sections */
+    .container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .container section {
+      margin-bottom: 60px;
+    }
+
+    .container h2 {
+      color: #00ff41;
+      font-size: 2em;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    }
+
+    /* Project grid for detailed view */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      border: 1px solid #4CAF50;
+      border-left: 4px solid #00ff41;
+      background: rgba(5, 10, 5, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 15px rgba(0,255,65,0.3);
+    }
+
+    .project-card h3 {
+      color: #00ff66;
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+
+    .project-card p {
+      color: #99ff99;
+      line-height: 1.6;
+    }
+
+    /* Skills section */
+    #skills p {
+      color: #66ff66;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    /* Footer */
     footer {
-      font-size: 0.8rem;
       text-align: center;
-      padding: 12px;
-      background-color: #000000;
-      color: #6914bc;
+      padding: 20px;
+      border-top: 1px solid #003300;
+      background-color: #000800;
+      font-size: 0.85rem;
+      color: #33cc33;
+      position: relative;
+      z-index: 2;
+      margin-top: 60px;
     }
 
-    /* Removes underline from links */
-    a {
+    footer p {
+      margin: 10px 0;
+    }
+
+    footer a {
+      color: #00ff41;
       text-decoration: none;
-      color: inherit;
+      margin: 0 8px;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #4CAF50;
+      text-shadow: 0 0 8px #00ff41;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Page Header -->
-  <header>
-    <h1>TangentJay~  I'M COOKING ~ Work in Progress </h1>
-    <p>Hey, I’m Jade — always learning, creating, and evolving. I believe in balancing the mind, body, and spirit to fuel creativity and well-being. Whether it’s through gaming, coding, or personal growth, I focus on small, intentional improvements that shape a positive and energized journey. Mental health is a key part of this balance, and I strive to keep my mind in a healthy space as I tackle new challenges. Your support helps me maintain that balance and continue creating meaningful, unpredictable content. Join me on the path of growth, discovery, and positivity!
+  <!-- INTRO SCREEN -->
+  <div id="intro-screen">
+    <h1>ACCESS TERMINAL</h1>
+    <p>Initializing TangentJay Dashboard...</p>
+    <button id="enter-btn">ENTER DASHBOARD</button>
+  </div>
 
-Doing stuff. Segregating salt Assimilating strats Aggregating vibes Amalgamating health + gaming + coding + life = unpredictable alchemy. ~ No dogma, just experiments. Fun times ahead!</p>
-  </header>
+  <!-- MAIN CONTENT -->
+  <div id="main-content">
 
-  <!-- Navigation bar -->
-  <nav>
-    <a href="#python">Python</a>
-    <a href="#cybersec">Cybersec</a>
-    <a href="#learning">Learning</a>
-    <a href="#news">News</a>
-    <a href="#projects">Projects</a>
-    <a href="#tech">Tech</a>
-    <a href ="#twitch">Twitch</a>
-  </nav>
+    <!-- Header -->
+    <header>
+      <h1>&gt; Jade Brooker's Portfolio</h1>
+      <p>Building knowledge, one line at a time — exploring cybersecurity, Python, databases, AI/ML and anything DATA.</p>
+    </header>
 
-  <!-- Content area + sidebar layout -->
-  <div class="wrapper">
-    
-    <!-- Main content tiles -->
-    <main class="grid">
-      <a href="#cybersec" class="tile">
-        <h2>Cybersec STuff</h2>
-        <p>s.</p>
-      </a>
-      <a href="#python" class="tile">
-        <h2>Python y</h2>
-        <p>Simple </p>
-      </a>
-      <a href="#learning" class="tile">
-        <h2>STEM Learning Hub</h2>
-        <p>Maths and stuff </p>
-      </a>
-      <a href="#news" class="tile">
-        <h2>Tech News</h2>
-        <p>x.</p>
-      </a>
-      <a href="#projects" class="tile">
-        <h2>Personal Projects</h2>
-        <p>y.</p>
-      </a>
-      <a href="#resources" class="tile">
-        <h2>Learning Resources</h2>
-        <p>and more.</p>
-      </a>
-    </main>
+    <!-- Navigation -->
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#learning">Learning</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h3>Quick Links</h3>
-      <a href="#notepad">Notepad++</a>
-      <a href="#markdown">Markdown 101</a>
-      <a href="#html">HTML for Beginners</a>
-      <a href="#vs"> placeholders</a>
-      <a href="#https://learnxinyminutes.com/">Learn x in Y min</a>
-    </aside>
+    <!-- Main layout with tiles and sidebar -->
+    <div class="wrapper" id="home">
+
+      <main class="grid">
+        <a href="#cybersec" class="tile">
+          <h2>Cybersecurity</h2>
+          <p>Dashboards, assessments, and simulations.</p>
+        </a>
+        <a href="#python" class="tile">
+          <h2>Python Projects</h2>
+          <p>Scripts, API tools, and many projects to be uploaded..</p>
+        </a>
+        <a href="#data" class="tile">
+          <h2>Data Analytics</h2>
+          <p>Early work in visualization and insights.</p>
+        </a>
+        <a href="#DATABASES" class="tile">
+          <h2>SQL</h2>
+          <p>Projects previews to come.</p>
+        </a>
+       <a href="#learning" class="tile">
+          <h2>Learning Logs</h2>
+          <p>Notes, challenges, and daily study progress.</p>
+        </a>
+      </main>
+
+      <aside class="sidebar">
+        <h3>Quick Links</h3>
+        <a href="#notes">Notepad++</a>
+        <a href="#markdown">Markdown 101</a>
+        <a href="#html">HTML Basics</a>
+        <a href="https://learnxinyminutes.com/" target="_blank">Learn X in Y Minutes</a>
+      </aside>
+    </div>
+
+    <!-- Detailed Projects Section -->
+    <div class="container">
+      <section id="projects">
+        <h2>[ Projects ]</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>[School, fall 2025] Healthcare Risk Assessment project</h3>
+            <p>Comprehensive cybersecurity risk analysis for medical clinic. Identifies 22 threats across 6 categories with prioritized mitigation strategies.</p>
+          </div>
+          <div class="project-card">
+            <h3>Python Risk Calculator</h3>
+            <p>Automated tool for calculating risk scores from CSV data. Generates reports and visualizations for threat prioritization.</p>
+          </div>
+          <div class="project-card">
+            <h3>Data Analysis</h3>
+            <p></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>[ Skills ]</h2>
+        <p>HTML, CSS, Python, Cybersecurity, SQL, Data Analysis, MSWords, **</p>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <p>TangentJay — "We Do It Live." © <span id="year"></span></p>
+      <p>
+        <a href="https://github.com/YourGitHubUsername" target="_blank">GitHub</a> |
+        <a href="mailto:yourname@email.com">Email</a> |
+        <a href="https://twitch.tv/YourTwitchName" target="_blank">Twitch</a>
+      </p>
+    </footer>
 
   </div>
 
-  <!-- Page Footer -->
-  <footer>
-    TangentJay — WE DO IT LIVE.
-  </footer>
+  <script>
+    // Automatically insert the current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // When "ENTER DASHBOARD" is clicked
+    document.getElementById('enter-btn').addEventListener('click', () => {
+      const intro = document.getElementById('intro-screen');
+      const main = document.getElementById('main-content');
+
+      intro.style.transition = 'opacity 1s ease';
+      intro.style.opacity = 0;
+
+      setTimeout(() => {
+        intro.style.display = 'none';
+        main.classList.add('visible');
+        document.body.style.overflow = 'auto'; // allow scrolling now
+      }, 1000);
+    });
+  </script>
 
 </body>
 </html>
